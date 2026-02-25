@@ -27,6 +27,7 @@ moved away from traditional server-based infrastructure (like EC2) and built a f
    
 5. **API Gateway** forwards the JSON response back to the user's browser.
 
+![browser](images/called-function.jpg)
 
 ## The Python Code (Lambda Handler)
 I wrote a dynamic function that reads the `name` parameter from the URL. If no name is provided, it defaults to a fallback value.
