@@ -26,3 +26,29 @@ moved away from traditional server-based infrastructure (like EC2) and built a f
 ![lambda](images/lambda-funcition.jpg)
    
 5. **API Gateway** forwards the JSON response back to the user's browser.
+
+
+## The Python Code (Lambda Handler)
+I wrote a dynamic function that reads the `name` parameter from the URL. If no name is provided, it defaults to a fallback value.
+
+```python
+import json
+
+def lambda_handler(event, context):
+    name = "Mysterious Guest"
+    
+    if event.get('queryStringParameters') and 'name' in event['queryStringParameters']:
+        name = event['queryStringParameters']['name']
+        
+    response_body = {
+        "message": f"Hello {name}! Your Serverless application is now reading data from the URL!",
+        "status": "Successfully processed 🚀"
+    }
+    
+    return {
+        'statusCode': 200,
+        'headers': {
+            'Content-Type': 'application/json'
+        },
+        'body': json.dumps(response_body)
+    }
