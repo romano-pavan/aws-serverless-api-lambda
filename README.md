@@ -42,7 +42,7 @@ def lambda_handler(event, context):
         
     response_body = {
         "message": f"Hello {name}! Your Serverless application is now reading data from the URL!",
-        "status": "Successfully processed 🚀"
+        "status": "Successfully processed "
     }
     
     return {
